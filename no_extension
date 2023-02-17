@@ -1,1 +1,1 @@
-export * from "https://github.com/magurotuna/deno-vendor-playground/blob/main/func.js";
+export * from "https://magurotuna-deno-vendor.deno.dev/func.js";
