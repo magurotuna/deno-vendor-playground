@@ -1,3 +1,3 @@
-import { add } from "https://github.com/magurotuna/deno-vendor-playground/blob/main/no_extension";
+import { add } from "./func.ts";
 
 console.log(add(40, 2));
