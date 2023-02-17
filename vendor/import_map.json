@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "https://magurotuna-deno-vendor.deno.dev/no_extension": "./magurotuna-deno-vendor.deno.dev/no_extension.js",
+    "https://magurotuna-deno-vendor.deno.dev/": "./magurotuna-deno-vendor.deno.dev/"
+  }
+}
