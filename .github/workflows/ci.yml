@@ -15,3 +15,43 @@ jobs:
         run: echo '${{ toJSON(env) }}'
       - name: Dump vars
         run: echo '${{ toJSON(vars) }}'
+
+      - name: Execute GraphQL query
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const query = `
+              query($owner: String!, $name: String!, $environment: String!) {
+                repository(owner: $owner, name: $name) {
+                  deployments(last: 1, environments: [$environment]) {
+                    edges {
+                      node {
+                        id
+                        environment
+                        createdAt
+                        creator {
+                          login
+                        }
+                        state
+                        updatedAt
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const variables = {
+              owner: "${{ github.repository_owner }}",
+              name: "${{ github.event.repository.name }}",
+              environment: "my-awesome-environment-for-test",
+            };
+
+            const response = await github.graphql(query, variables);
+            const deployment = response.repository.deployments.edges[0].node;
+            console.log("Deployment ID:", deployment.id);
+            console.log("Environment:", deployment.environment);
+            console.log("Created at:", deployment.createdAt);
+            console.log("Creator:", deployment.creator.login);
+            console.log("State:", deployment.state);
+            console.log("Updated at:", deployment.updatedAt);
