@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: test
+      name: my-awesome-environment-for-test
 
     steps:
       - name: Dump GitHub context
