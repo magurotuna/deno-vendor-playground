@@ -16,6 +16,14 @@ jobs:
       - name: Dump vars
         run: echo '${{ toJSON(vars) }}'
 
+      - name: Get Deployment
+        uses: KowalskiTom/get-github-deployment@v1
+        id: getDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: my-awesome-environment-for-test
+      - run: echo "steps.getDeployment.outputs.deployment_id ${{ toJSON(steps.getDeployment.outputs) }}"
+
       - name: Execute GraphQL query
         uses: actions/github-script@v6
         with:
