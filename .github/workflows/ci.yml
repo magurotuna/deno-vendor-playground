@@ -10,5 +10,8 @@ jobs:
 
     steps:
       - name: Dump GitHub context
-        id: github_context_step
         run: echo '${{ toJSON(github) }}'
+      - name: Dump env
+        run: echo '${{ toJSON(env) }}'
+      - name: Dump vars
+        run: echo '${{ toJSON(vars) }}'
