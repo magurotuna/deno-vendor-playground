@@ -2,7 +2,17 @@ name: Context testing
 on: push
 
 jobs:
-  dump_contexts_to_log:
+  test:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: test
+
+    steps:
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github) }}'
+
+  my-awesome-environment-for-test:
     runs-on: ubuntu-latest
 
     environment:
