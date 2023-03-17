@@ -1,5 +1,12 @@
 name: Context testing
-on: push
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
 
 jobs:
   test:
