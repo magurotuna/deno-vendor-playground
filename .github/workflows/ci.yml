@@ -20,6 +20,6 @@ jobs:
         run: echo "good morning"
       - name: must fail
         run: exit 1
-        conitnue-on-error: true
+          #conitnue-on-error: true
       - name: after failure
         run: echo "hello"
