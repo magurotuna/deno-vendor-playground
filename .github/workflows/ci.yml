@@ -19,7 +19,7 @@ jobs:
       - name: before failure
         run: echo "good morning"
       - name: must fail
+        continue-on-error: true
         run: exit 1
-          #conitnue-on-error: true
       - name: after failure
         run: echo "hello"
