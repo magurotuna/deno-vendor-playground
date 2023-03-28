@@ -12,6 +12,12 @@ jobs:
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
+
+  continue_on_error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: before failure
+        run: echo "good morning"
       - name: must fail
         run: exit 1
         conitnue-on-error: true
